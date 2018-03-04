@@ -1,6 +1,6 @@
 import { call, put } from 'redux-saga/effects'
 import createApi from '../Services'
-import actions from '../Redux/WordPressRedux'
+import actions from '../Redux/WordpressRedux'
 
 export function * wpFetchAll (payload) {
   try {
