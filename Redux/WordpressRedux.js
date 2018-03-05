@@ -18,7 +18,7 @@ const { Types, Creators } = createActions({
 })
 
 export const WordpressTypes = Types
-export default Creators
+export const WordpressActions = Creators
 
 /* ------------- Initial State ------------- */
 export const INITIAL_STATE = Immutable({
