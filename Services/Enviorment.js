@@ -3,6 +3,6 @@ let Config
 if (process.env['WEB']) {
   Config = process.env
 } else {
-  Config = require('react-native-dotenv')
+  Config = Expo.Constants.manifest.extra
 }
 export default Config
