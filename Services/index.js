@@ -1,12 +1,13 @@
 import {create} from 'apisauce'
-
+import config from './Enviorment'
+const ENV = {
+  // place your wordpress json call here
+  baseURL: config.API_ROOT,
+  headers: {'content-type': 'application/json'}
+}
 const setSize = 12
 // define the api
-const icreateApi = create({
-  // place your wordpress json call here
-  baseURL: 'http://i-create.org/wp-json/wp/v2/',
-  headers: {'content-type': 'application/json'}
-})
+const icreateApi = create(ENV)
 
 const getAll = (data = {pageName: null}) => {
   const _getAll = () => icreateApi.get(`posts?per_page=${setSize}`, null, icreateApi.headers)

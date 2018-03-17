@@ -3,6 +3,7 @@
  */
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
+import RS from 'ramdasauce'
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -40,7 +41,8 @@ export const wpPageSucceeded = (state, {payload}) => {
 }
 
 export const wpSlugSucceeded = (state, {payload}) => {
-  return state.merge({post: payload.data[0], fetching: false})
+  const newDataArray = state.posts.concat(payload.data)
+  return state.merge({post: payload.data[0], fetching: false, posts: (RS.findByProp('id', payload.data[0].id, state.posts) ? this.state.posts : newDataArray)})
 }
 
 export const wpAllSucceeded = (state, {payload}) => {
