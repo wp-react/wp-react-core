@@ -41,8 +41,7 @@ export const wpPageSucceeded = (state, {payload}) => {
 }
 
 export const wpSlugSucceeded = (state, {payload}) => {
-  const newDataArray = state.posts.concat(payload.data)
-  return state.merge({post: payload.data[0], fetching: false, posts: (RS.findByProp('id', payload.data[0].id, state.posts) ? state.posts : newDataArray)})
+  return state.merge({post: payload.data[0], fetching: false})
 }
 
 export const wpAllSucceeded = (state, {payload}) => {
