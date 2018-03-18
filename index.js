@@ -9,4 +9,4 @@ export const placeHolderImg = require('./helpers/wpContent').placeHolderImg
 export const wpContent = require('./helpers/wpContent').wpContent
 
 // Services
-export const AkiliApi = require('./Services/').default
+export const WpApi = require('./Services/').default
