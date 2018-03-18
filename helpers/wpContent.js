@@ -12,6 +12,6 @@ export const wpContent = (value) => {
     slug: value.slug,
     excerpt: value.excerpt.rendered,
     body: value.content.rendered,
-    image: (value.better_featured_image ? value.better_featured_image.media_details.sizes['medium_large'].source_url : randomItem(placeHolderImg))
+    image: (value.better_featured_image && value.better_featured_image.media_details.sizes['medium_large'] ? value.better_featured_image.media_details.sizes['medium_large'].source_url : randomItem(placeHolderImg))
   }
 }
