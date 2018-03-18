@@ -8,7 +8,7 @@ export const placeHolderImg = Config.placeHolder
 export const wpContent = (value) => {
   return {
     title: value.title.rendered,
-    link: root + value.link.replace(`${site}`, ''),
+    link: value.link.replace(`${site}`, ''),
     slug: value.slug,
     excerpt: value.excerpt.rendered,
     body: value.content.rendered,
