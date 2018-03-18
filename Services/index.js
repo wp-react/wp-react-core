@@ -1,8 +1,8 @@
 import {create} from 'apisauce'
-import config from './Enviorment'
+import Config from './Enviorment'
 const ENV = {
   // place your wordpress json call here
-  baseURL: config.API_ROOT,
+  baseURL: Config.API_ROOT,
   headers: {'content-type': 'application/json'}
 }
 const setSize = 12
@@ -31,6 +31,7 @@ const getPage = (data = {pageNumber: 0}) => {
 }
 
 export default {
+  Config,
   getAll,
   getSlug,
   getPage
