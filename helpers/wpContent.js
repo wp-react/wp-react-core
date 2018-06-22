@@ -6,7 +6,7 @@ const site = Config.SITE
 export const placeHolderImg = Config.placeHolder
 
 export const wpContent = (value) => {
-  if (value.title.rendered) {
+  if (value.title) {
     return {
       title: value.title.rendered,
       link: value.link.replace(`${site}`, ''),
