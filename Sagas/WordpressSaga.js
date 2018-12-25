@@ -17,6 +17,9 @@ export function * wpFetchPage (payload) {
   try {
     const apiCreateAll = createApi.getPage(payload)
     const data = yield call(apiCreateAll._getPage)
+    if (data.data.code === 'rest_post_invalid_page_number') {
+      yield put(WordpressActions.wpPageRequestFailed())
+    }
     yield put(WordpressActions.wpPageSucceeded(data))
   } catch (e) {
     yield put(WordpressActions.failure({error: e}))

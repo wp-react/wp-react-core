@@ -13,9 +13,11 @@ const { Types, Creators } = createActions({
   wpPageRequested: ['payload'],
   wpSlugRequested: ['payload'],
   wpFailed: ['error'],
+  wpPageRequestFailed: null,
   wpPageSucceeded: ['payload'],
   wpSlugSucceeded: ['payload'],
-  wpAllSucceeded: ['payload']
+  wpAllSucceeded: ['payload'],
+  wpPageReset:null
 })
 
 export const WordpressTypes = Types
@@ -26,6 +28,7 @@ export const INITIAL_STATE = Immutable({
   fetching: false,
   index: 0,
   posts: [],
+  hasReachedEnd: false,
   post: null
 })
 
@@ -38,6 +41,14 @@ export const request = (state) => {
 export const wpPageSucceeded = (state, {payload}) => {
   const newDataArray = state.posts.concat(payload.data)
   return state.merge({posts: newDataArray, fetching: false})
+}
+
+export const wpPageRequestFailed = (state) => {
+  return state.merge({hasReachedEnd: true, fetching: false})
+}
+
+export const wpPageReset = (state) => {
+  return state.merge({hasReachedEnd: false, fetching: false})
 }
 
 export const wpSlugSucceeded = (state, {payload}) => {
@@ -65,6 +76,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.WP_PAGE_SUCCEEDED]: wpPageSucceeded,
   [Types.WP_SLUG_SUCCEEDED]: wpSlugSucceeded,
   [Types.WP_ALL_SUCCEEDED]: wpAllSucceeded,
+  [Types.WP_PAGE_REQUEST_FAILED]: wpPageRequestFailed,
+  [Types.WP_PAGE_RESET]: wpPageReset,
   [Types.WP_FAILED]: failure,
   [Types.GET_POSTS]: getPosts
 })
